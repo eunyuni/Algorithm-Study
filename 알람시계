@@ -1,0 +1,95 @@
+백준 2884
+첫째 줄에 두 정수 H와 M이 주어진다. (0 ≤ H ≤ 23, 0 ≤ M ≤ 59) 그리고 이것은 현재 상근이가 설정한 놓은 알람 시간 H시 M분을 의미한다.
+입력 시간은 24시간 표현을 사용한다. 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)이다. 시간을 나타낼 때, 불필요한 0은 사용하지 않는다.
+
+------------------------------------------------
+
+let a1 = readLine()!
+
+let array = a1.components(separatedBy: " ")
+var hh = Int(array[0])!
+var mm = Int(array[1])!
+var quickAlarm = hh * 60 + mm - 45;
+var alarmHour = quickAlarm / 60
+var alarmMin = quickAlarm % 60
+if (alarmMin < 0) {
+    alarmMin += 60
+    alarmHour  = alarmHour - 1
+    if (alarmHour == -1) {
+        alarmHour = 23
+    }
+}
+print("\(alarmHour) \(alarmMin)")
+
+------------------------------------------------
+
+let a1 = readLine()!
+
+let array = a1.components(separatedBy: " ")
+var H = Int(array[0])!
+var M = Int(array[1])!
+
+let m1 = (60 + M) - 45
+var hh = 0
+var mm = 0
+
+if m1 > 59 {
+    mm = m1 - 60
+} else {
+    mm = m1
+}
+
+if H == 0 && m1 < 60{
+    hh = 23
+} else if m1 > 59 {
+    hh = H
+} else {
+    hh = H - 1
+}
+print("\(hh) \(mm)")
+
+------------------------------------------------
+
+for _ in (0…19) {
+    print("start")
+    let a1 = readLine()!
+
+    let array = a1.components(separatedBy: " ")
+    let H = Int(array[0])!
+    let M = Int(array[1])!
+
+    let time = H * 60 + M
+
+    if time < 45 {
+        let result = time - 45 + 60 * 24
+        print ("\(result / 60) \(result % 60)")
+    } else {
+        
+        let result = time - 45
+        print ("\(result / 60) \(result % 60)")
+        
+    }
+}
+
+------------------------------------------------
+
+let time = readLine()!
+let timeArr = time.components(separatedBy: " ")
+
+var h = Int(timeArr[0])!
+var m = Int(timeArr[1])!
+
+if(m<45){
+    if(h==0){
+        h=23
+    } else {
+        h-=1
+    }
+    m=m-45+60
+}else{
+    m-=45
+}
+
+print(h, m)
+
+------------------------------------------------
