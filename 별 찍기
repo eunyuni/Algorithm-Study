@@ -1,0 +1,32 @@
+
+첫째 줄에는 별 1개, 둘째 줄에는 별 2개, N번째 줄에는 별 N개를 찍는 문제
+하지만, 오른쪽을 기준으로 정렬한 별(예제 참고)을 출력하시오.
+첫째 줄부터 N번째 줄까지 차례대로 별을 출력한다.
+
+let a1 = readLine()!
+
+var b = ""
+let n = Int(a1)!
+for i in 1...n {
+    for j in 1...n {
+        if (n - i) < j {
+            b.append("*")
+        } else {
+            b.append(" ")
+        }
+    }
+    b.append("\n")
+}
+print(b)
+
+-------------------------------------------------------------------
+
+let input1 = readLine()!.split(separator: " ").map { Int($0)! }
+let array = readLine()!.split(separator: " ")
+    .map { Int($0)! }
+    .filter { $0 < input1[1] }
+array.forEach {
+    print($0, terminator: " ")
+}
+
+
