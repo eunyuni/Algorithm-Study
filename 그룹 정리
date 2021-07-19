@@ -1,0 +1,67 @@
+총 그룹은 7개가 있다.
+N개의 숫자들은 7백번 째의 숫자들이 있고 같은 번대의 숫자들로 그룹을 지어서 배열을 만들어준다.
+같은 그룹들의 구분은 @를 넣어주고 끝에 @이가 붙으면 @이는 지워준다.
+ex) 103 202 402 403 404 503 603 507 702 703 404 -> ["103", "202", "", "402@403@404@404", "503@507", "603", "702@703"]
+
+import Foundation
+let array = readLine()!.split(separator: " ").map { Int($0)! }
+
+var group = [String](repeating: "", count: 7)
+
+array.forEach {
+    let idx = $0 / 100
+    group[idx - 1].append(String($0))
+    group[idx - 1].append("@")
+}
+
+for i in 0...6 {
+    if !group[i].isEmpty {
+        group[i].removeLast()
+    }
+}
+
+print(group)
+
+----------------------------------------------------------------------------
+
+import Foundation
+let array = readLine()!.split(separator: " ").map { Int($0)! }
+
+var group = [String](repeating: "", count: 7)
+
+array.forEach {
+    let idx = $0 / 100
+    switch idx {
+    case 1:
+        group[0].append(String($0))
+        group[0].append("@")
+    case 2:
+        group[1].append(String($0))
+        group[1].append("@")
+    case 3:
+        group[2].append(String($0))
+        group[2].append("@")
+    case 4:
+        group[3].append(String($0))
+        group[3].append("@")
+    case 5:
+        group[4].append(String($0))
+        group[4].append("@")
+    case 6:
+        group[5].append(String($0))
+        group[5].append("@")
+    case 7:
+        group[6].append(String($0))
+        group[6].append("@")
+    default:
+        print("error")
+    }
+}
+
+for i in 0...6 {
+    if !group[i].isEmpty {
+        group[i].removeLast()
+    }
+}
+
+print(group)
